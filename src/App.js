@@ -2,7 +2,7 @@ import './App.css';
 import Weather from "./Weather";
 import Footer from "./Footer";
 
-function App() {
+export default function App() {
   return (
     <div className="App">
       <Weather />
@@ -12,4 +12,3 @@ function App() {
   );
 }
 
-export default App;
