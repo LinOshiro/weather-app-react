@@ -5,12 +5,13 @@ export default function Footer() {
     <div className="Footer">
       <footer>
         <small>
+          Open-sourced on{" "}
           <a
             href="https://github.com/LinOshiro/weather-app-react"
             target="_blank"
             rel="noreferrer"
           >
-            Open-sourced on GitHub{" "}
+            GitHub{" "}
           </a>
           by Lindsay Oshiro
         </small>
