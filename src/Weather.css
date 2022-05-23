@@ -10,31 +10,31 @@
   margin-bottom: 20px;
 }
 
-.Weather .weather-temperature img {
+.Weather canvas {
   margin-right: 10px;
-  height: 100px;
-  width: 100px;
+  margin-top: 5px;
+  display: inline-block;
 }
 
-.Weather .weather-temperature strong {
+.Weather .temperature {
   color: rgb(46, 49, 61);
   font-size: 65px;
   font-weight: 400;
   line-height: 1;
 }
 
-.Weather .weather-temperature .units {
+.Weather .units {
   position: relative;
   font-size: 16px;
   top: -34px;
 }
 
-.Weather .weather-temperature .active {
+.Weather .active {
   color: black;
   cursor: default;
 }
 
-.Weather .weather-temperature .active:hover {
+.Weather .active:hover {
   text-decoration: none;
 }
 
