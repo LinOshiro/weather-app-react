@@ -1,25 +1,24 @@
 import React, { useState } from "react";
+import FormattedDate from "./FormattedDate.js";
 import axios from "axios";
 import "./Weather.css";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
-  const [city, setCity] = useState(props.defaultCity);
+
 
   function handleResponse(response) {
-    console.log(response.data);
-
     setWeatherData = ({
       ready: true,
-      date: "Tuesday 10:00",
-      temp: response.data.main.temp,
-      iconUrl: "https://ssl.gstatic.com/onebox/weather/64/sunny.png",
+      date: new Date(response.data.dt * 1000),
+      temperature: response.data.main.temp,
+      icon:response.data.weather[0].icon,
       description: response.data.weather[0].description,
       humidity: response.data.main.humidity,
       wind: response.data.wind.speed,
-      maxTemp: "80",
-      minTemp: "64",
-      feelsLike: "77",
+      maxTemp: response.data.main.temp_max,
+      minTemp: response.data.main.temp_min,
+      feelsLike: response.data.main.feels_like,
       city: response.data.name,
     });
   }
@@ -57,14 +56,16 @@ export default function Weather(props) {
       <div className="overview">
         <h1>{weatherData.city}</h1>
         <ul>
-          <li>Last updated: {weatherData.date}</li>
+          <li>
+            <FormattedDate date={weatherData.date} />
+          </li>
           <li className="text-capitalize">{weatherData.description}</li>
         </ul>
       </div>
       <div className="row">
         <div className="col-6">
           <div className="clearfix weather-temperature">
-            <img src={weatherData.iconUrl} alt={weatherData.description} className="float-left" />
+            <img src={weatherData.icon} alt={weatherData.description} className="float-left" />
             <span className="float-left">
               <span className="temperature">{Math.round(weatherData.temp)}</span>
             </span>
@@ -74,10 +75,10 @@ export default function Weather(props) {
         <div className="col-6">
           <ul>
             <li>Humidity: {weatherData.humidity}</li>
-            <li>Wind: {weatherData.wind} mph</li>
-            <li>Max Temp: {weatherData.maxTemp}°</li>
-            <li>Min Temp: {weatherData.minTemp}°</li>
-            <li>Feels Like: {weatherData.feelsLike}°</li>
+            <li>Wind: {Math.round(weatherData.wind)} mph</li>
+            <li>Max Temp: {Math.round(weatherData.maxTemp)}°</li>
+            <li>Min Temp: {Math.round(weatherData.minTemp)}°</li>
+            <li>Feels Like: {Math.round(weatherData.feelsLike)}°</li>
           </ul>
         </div>
       </div>
@@ -85,7 +86,7 @@ export default function Weather(props) {
   
   } else {
     const apiKey = "358bb59892afa5069bcb43f658651551";
-    let apiUrl = `http://api.opemweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=imperial`;
+    let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=imperial`;
     axios.get(apiUrl).then(handleResponse);
   
     return "Loading...";
