@@ -1,6 +1,7 @@
 import React from "react";
 import FormattedDate from "./FormattedDate.js";
 import WeatherIcon from "./WeatherIcon";
+import WeatherTemperature from "./WeatherTemperature.js";
 
 export default function WeatherInfo(props) {
     return (
@@ -16,24 +17,24 @@ export default function WeatherInfo(props) {
           <div className="col-6">
             <div className="clearfix">
               <div className="float-left">
-                <WeatherIcon code={props.data.icon} /> 
+                <WeatherIcon code={props.data.icon} />
               </div>
-                <span className="temperature">
-                  {Math.round(props.data.temperature)}
-                </span>
-                <span className="units"> °F</span>
+              <div className="float-left">
+                <WeatherTemperature celsius={props.data.temperature} />
+                
               </div>
-            </div>
-            <div className="col-6">
-              <ul>
-                <li>Humidity: {props.data.humidity}</li>
-                <li>Wind: {Math.round(props.data.wind)} mph</li>
-                <li>Max Temp: {Math.round(props.data.maxTemp)}°</li>
-                <li>Min Temp: {Math.round(props.data.minTemp)}°</li>
-                <li>Feels Like: {Math.round(props.data.feelsLike)}°</li>
-              </ul>
             </div>
           </div>
+          <div className="col-6">
+            <ul>
+              <li>Humidity: {props.data.humidity}%</li>
+              <li>Wind: {Math.round(props.data.wind)} mph</li>
+              <li>Max Temp: {Math.round(props.data.maxTemp)}°</li>
+              <li>Min Temp: {Math.round(props.data.minTemp)}°</li>
+              <li>Feels Like: {Math.round(props.data.feelsLike)}°</li>
+            </ul>
+          </div>
         </div>
+      </div>
     );
 }

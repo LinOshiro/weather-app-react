@@ -8,7 +8,7 @@ export default function Weather(props) {
   const [city, setCity] = useState(props.defaultCity);
 
   function handleResponse(response) {
-    setWeatherData ({
+    setWeatherData({
       ready: true,
       temperature: response.data.main.temp,
       date: new Date(response.data.dt * 1000),
@@ -33,8 +33,8 @@ export default function Weather(props) {
   }
 
   function search() {
-  let apiKey = "358bb59892afa5069bcb43f658651551";
-  let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+  const apiKey = "358bb59892afa5069bcb43f658651551";
+  let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(handleResponse);
   }
 
@@ -42,19 +42,16 @@ export default function Weather(props) {
     return (
       <div className="Weather">
         <form onSubmit={handleSubmit}>
-          <div className="mb-3">
             <div className="row">
-              <div className="col-6">
+              <div className="col-9">
                 <input
                   type="search"
                   placeholder="Type a location..."
                   className="form-control shadow-sm"
-                  id="city-input"
-                  autoComplete="off"
+                  autoFocus="on"
                   onChange={handleCityChange}
                 />
               </div>
-            </div>
             <div className="col-3">
               <input
                 type="submit"
@@ -62,20 +59,13 @@ export default function Weather(props) {
                 className="btn btn-primary w-100"
               />
             </div>
-            <div className="col-3">
-              <button
-                className="btn btn-warning btn-current w-100"
-                id="current-location-button"
-              >
-                Current
-              </button>
-            </div>
           </div>
         </form>
         <WeatherInfo data={weatherData} />
       </div>
     );
   } else {
+    search();
     return "Loading...";
   }
     }
