@@ -11,21 +11,21 @@
 }
 
 .Weather canvas {
-  margin-right: 10px;
-  margin-top: 5px;
-  display: inline-block;
+ margin: 10px;
 }
 
 .Weather .temperature {
   color: rgb(46, 49, 61);
-  font-size: 65px;
+  font-weight: bold;
+  font-size: 60px;
+  margin-left: 20px;
+  margin-top: 20px;
   font-weight: 400;
-  line-height: 1;
 }
 
-.Weather .units {
+.Weather .unit {
   position: relative;
-  font-size: 16px;
+  font-size: 18px;
   top: -34px;
 }
 
