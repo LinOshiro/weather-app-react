@@ -43,15 +43,6 @@
   text-decoration: none !important;
   text-align: center;
 }
-.Weather .forecast {
-  text-align: center;
-}
-
-.Weather .weather-forecast {
-  margin-top: 20px;
-  text-align: center;
-  color: black;
-}
 
 .Weather ul {
     list-style: none;
