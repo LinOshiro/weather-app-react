@@ -9,7 +9,7 @@ export default function Footer() {
           <a
             href="https://github.com/LinOshiro/weather-app-react"
             target="_blank"
-            rel="noreferrer"
+            rel="nooppener noreferrer"
           >
             GitHub{" "}
           </a>
