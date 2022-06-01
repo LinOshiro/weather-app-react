@@ -13,6 +13,16 @@ export default function Footer() {
           >
             GitHub{" "}
           </a>
+          and{" "}
+          <small>
+            <a
+              href="https://magical-meringue-9dbe5d.netlify.app"
+              target="_blank"
+              rel="nooppener noreferrer"
+            >
+              hosted on Netlify
+            </a>
+          </small>{" "}
           by Lindsay Oshiro
         </small>
       </footer>
